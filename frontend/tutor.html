@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tutor - Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tutor-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Your AI Learning Coach</h1>
+            <p class="subtitle">Learn through Socratic dialogue and personalized teaching</p>
+            <nav>
+                <a href="index.html" class="nav-link">Quiz Mode</a>
+                <a href="tutor.html" class="nav-link active">Tutor Mode</a>
+            </nav>
+        </header>
+
+        <!-- Mode Selection -->
+        <div id="mode-selection" class="card">
+            <h2>Choose Your Learning Mode</h2>
+            <div class="mode-grid">
+                <div class="mode-card" onclick="selectMode('exploration')">
+                    <div class="mode-icon">🔍</div>
+                    <h3>Exploration</h3>
+                    <p>Discover what you already know through questions</p>
+                </div>
+                <div class="mode-card" onclick="selectMode('depth_check')">
+                    <div class="mode-icon">🎯</div>
+                    <h3>Depth Check</h3>
+                    <p>Test how deeply you understand a concept</p>
+                </div>
+                <div class="mode-card" onclick="selectMode('teaching')">
+                    <div class="mode-icon">📚</div>
+                    <h3>Teach Me</h3>
+                    <p>Learn a new concept with AI guidance</p>
+                </div>
+                <div class="mode-card" onclick="selectMode('practice')">
+                    <div class="mode-icon">💪</div>
+                    <h3>Practice</h3>
+                    <p>Apply concepts in realistic scenarios</p>
+                </div>
+                <div class="mode-card" onclick="selectMode('reflection')">
+                    <div class="mode-icon">🤔</div>
+                    <h3>Reflection</h3>
+                    <p>Think about your learning journey</p>
+                </div>
+                <div class="mode-card" onclick="showLearningPaths()">
+                    <div class="mode-icon">🗺️</div>
+                    <h3>Learning Path</h3>
+                    <p>Follow a personalized curriculum</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concept Selection -->
+        <div id="concept-selection" class="card" style="display: none;">
+            <h2>Select a Concept</h2>
+            <p id="mode-description"></p>
+            <div id="topics-list"></div>
+            <button onclick="backToModeSelection()" class="btn btn-secondary">Back</button>
+        </div>
+
+        <!-- Learning Paths -->
+        <div id="learning-paths-view" class="card" style="display: none;">
+            <h2>Your Learning Paths</h2>
+            <div id="paths-list"></div>
+            <button onclick="backToModeSelection()" class="btn btn-secondary">Back</button>
+        </div>
+
+        <!-- Tutoring Session -->
+        <div id="tutoring-session" class="card" style="display: none;">
+            <div class="session-header">
+                <div>
+                    <h2 id="session-concept">Exploring...</h2>
+                    <p id="session-mode" class="session-meta"></p>
+                </div>
+                <button onclick="endTutoringSession()" class="btn btn-danger">End Session</button>
+            </div>
+
+            <!-- Chat Interface -->
+            <div id="chat-container">
+                <div id="chat-messages"></div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <textarea id="user-input" placeholder="Type your response here..." rows="3"></textarea>
+                <button onclick="sendMessage()" class="btn btn-primary">Send</button>
+            </div>
+
+            <!-- Thinking Indicator -->
+            <div id="thinking-indicator" style="display: none;">
+                <div class="thinking-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <p>AI is thinking...</p>
+            </div>
+        </div>
+
+        <!-- Knowledge Dashboard -->
+        <div id="knowledge-dashboard" class="card">
+            <h2>Your Knowledge Map</h2>
+            <div id="mastery-overview"></div>
+        </div>
+    </div>
+
+    <script src="tutor.js"></script>
+</body>
+</html>

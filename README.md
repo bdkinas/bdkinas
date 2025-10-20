@@ -1,10 +1,30 @@
-# AI Learning Platform
+# AI Learning Platform v2.0
 
-An intelligent learning platform powered by AI that helps you learn more effectively using proven principles from "Make It Stick: The Science of Successful Learning".
+**Your Personal AI Learning Coach** - Transform how you learn with Socratic dialogue, personalized teaching, and deep understanding assessment.
 
-## Features
+An intelligent learning platform that goes beyond quizzes to truly teach you through conversation, assess your depth of understanding using Bloom's Taxonomy, and guide you on a personalized learning journey.
 
-### Core Learning Principles (Make It Stick)
+## 🚀 Revolutionary Features
+
+### **Two Modes of Learning**
+
+#### **1. Quiz Mode** - Traditional spaced repetition with adaptive difficulty
+- AI-generated quizzes based on your topics
+- SM-2 algorithm for optimal review scheduling
+- Performance tracking and analytics
+- Interleaved practice across topics
+
+#### **2. Tutor Mode** - Socratic AI teaching and coaching (NEW!)
+- **Interactive Dialogue**: Learn through conversation with an AI tutor
+- **Depth Assessment**: Bloom's Taxonomy-based understanding evaluation (Remember → Understand → Apply → Analyze → Evaluate → Create)
+- **Personalized Teaching**: AI adapts explanations to your knowledge gaps
+- **Learning Paths**: Structured curriculum with prerequisite management
+- **Metacognition Training**: Develop self-awareness about your learning
+- **Multiple Teaching Styles**: Exploration, depth checking, direct teaching, practice, and reflection
+
+## 🎯 Core Learning Principles
+
+Based on "Make It Stick: The Science of Successful Learning":
 
 1. **Spaced Repetition**: Questions are automatically scheduled at optimal intervals using the SM-2 algorithm
 2. **Retrieval Practice**: Active testing strengthens memory more than passive review
@@ -12,21 +32,38 @@ An intelligent learning platform powered by AI that helps you learn more effecti
 4. **Elaboration**: Connect new knowledge to existing understanding
 5. **Generation**: Produce answers before seeing them to enhance retention
 6. **Desirable Difficulty**: Adaptive difficulty keeps you in the optimal learning zone
+7. **Socratic Questioning**: Learn through dialogue and inquiry (NEW!)
+8. **Metacognition**: Think about your thinking and develop learning strategies (NEW!)
 
-### AI-Powered Features
+## 🤖 AI-Powered Intelligence
 
-- **Personalized Question Generation**: AI creates custom questions based on your topics using Claude
-- **Adaptive Learning**: System learns your preferences and adjusts difficulty
-- **Performance Analytics**: Track accuracy, streaks, and progress over time
-- **Smart Scheduling**: Questions appear when you're most likely to forget them
+### Quiz Generation
+- **Personalized Questions**: AI creates custom questions based on your topics
+- **Multiple Question Types**: Flashcards, multiple choice, open-ended, elaboration
+- **Difficulty Adaptation**: System learns and adjusts to your level
+- **Smart Scheduling**: Questions appear when you're most likely to forget
 
-### Technical Features
+### Socratic Tutoring (NEW!)
+- **Conversational Learning**: Real-time dialogue with AI tutor
+- **Probing Questions**: "Why?", "How?", "What if?" to deepen understanding
+- **Just-in-Time Teaching**: Explanations provided exactly when you need them
+- **Gap Analysis**: Identifies specific knowledge gaps and misconceptions
+- **Understanding Signals**: Detects confidence, confusion, and comprehension depth
 
-- RESTful API built with FastAPI
-- SQLite database (easy to backup and portable)
-- Modern, responsive web interface
-- Spaced repetition using SM-2 algorithm
-- Session-based learning with progress tracking
+### Learning Paths (NEW!)
+- **Concept Dependencies**: Manages prerequisites and learning sequences
+- **Personalized Curriculum**: Adapts to your progress and understanding
+- **Milestone Tracking**: Celebrates progress through the learning journey
+- **Adaptive Pacing**: Speeds up or slows down based on performance
+
+## 🧠 Technical Architecture
+
+- **Backend**: FastAPI with Python
+- **Database**: SQLite (easy to backup and portable)
+- **AI Engine**: Anthropic Claude for intelligent tutoring
+- **Frontend**: Modern, responsive web interface
+- **Algorithms**: SM-2 spaced repetition, Bloom's Taxonomy assessment
+- **Knowledge Modeling**: Concept graphs with mastery tracking
 
 ## Setup Instructions
 
@@ -97,7 +134,7 @@ An intelligent learning platform powered by AI that helps you learn more effecti
 - Get a key from https://console.anthropic.com/
 - Or manually create questions by modifying the database
 
-### 3. Start Learning
+### 3. Start Learning (Quiz Mode)
 
 1. Go to the "Review" tab
 2. Select session type:
@@ -108,12 +145,45 @@ An intelligent learning platform powered by AI that helps you learn more effecti
 4. Answer questions and rate your confidence
 5. Review your session summary
 
-### 4. Build a Learning Habit
+### 4. Try Tutor Mode (NEW!)
 
-- The system tracks your daily streak
-- Questions are automatically scheduled for optimal retention
-- Review daily for best results (even just 10-15 minutes)
-- The AI learns your preferences over time
+Navigate to Tutor Mode for deep, conversational learning:
+
+1. Click "Tutor Mode" in the navigation
+2. Choose your learning approach:
+   - **🔍 Exploration**: Discover what you already know through Socratic questions
+   - **🎯 Depth Check**: Test how deeply you understand (Bloom's Taxonomy)
+   - **📚 Teach Me**: Learn through AI-guided explanations and examples
+   - **💪 Practice**: Apply concepts in realistic scenarios
+   - **🤔 Reflection**: Develop metacognition and learning strategies
+   - **🗺️ Learning Path**: Follow a structured curriculum
+
+3. Select a concept to explore
+4. Engage in conversation with your AI tutor
+5. The AI will:
+   - Ask probing questions to assess your understanding
+   - Provide personalized teaching based on your gaps
+   - Guide you to deeper comprehension
+   - Track your progress using Bloom's Taxonomy
+
+**Example Tutor Mode Dialogue:**
+```
+AI: Let's explore Python functions. What do you think a function is?
+You: A reusable block of code?
+AI: Good start! Why would we want to make code reusable?
+You: To avoid repeating ourselves?
+AI: Exactly! Can you think of a real-world example where you'd use a function?
+You: Maybe calculating the area of different circles?
+AI: Perfect! Now let's explore how we'd write that...
+```
+
+### 5. Build a Learning Habit
+
+- **Daily Practice**: Even 10-15 minutes daily beats long cramming sessions
+- **Mix Modes**: Use Quiz Mode for retention, Tutor Mode for deep understanding
+- **Track Progress**: Watch your knowledge map grow with each session
+- **Reflect Regularly**: Use reflection mode to develop metacognitive awareness
+- **Follow Learning Paths**: Let the AI guide your structured learning journey
 
 ## API Documentation
 
@@ -123,13 +193,25 @@ Once the backend is running, visit:
 
 ### Key Endpoints
 
+**Quiz Mode:**
 - `POST /topics/` - Create a new topic
 - `GET /topics/` - List all topics
 - `POST /topics/{id}/generate-questions` - Generate AI questions
-- `POST /reviews/start-session` - Start a learning session
+- `POST /reviews/start-session` - Start a quiz session
 - `GET /reviews/next-questions/{session_id}` - Get questions for review
 - `POST /reviews/submit-answer` - Submit an answer
 - `GET /reviews/stats` - Get learning statistics
+
+**Tutor Mode (NEW!):**
+- `POST /tutoring/concepts` - Create a concept
+- `GET /tutoring/concepts/topic/{topic_id}` - Get concepts for a topic
+- `POST /tutoring/sessions/start` - Start AI tutoring session
+- `POST /tutoring/sessions/continue` - Continue Socratic dialogue
+- `POST /tutoring/sessions/{id}/end` - End session and assess depth
+- `GET /tutoring/mastery/concept/{concept_id}` - Get mastery level
+- `POST /tutoring/learning-paths` - Create personalized learning path
+- `GET /tutoring/learning-paths/{id}/next-concept` - Get next concept to learn
+- `GET /tutoring/insights` - Get AI-generated learning insights
 
 ## Project Structure
 
