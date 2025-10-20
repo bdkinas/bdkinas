@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Learning Platform</h1>
+            <p class="subtitle">Powered by Make It Stick Principles</p>
+        </header>
+
+        <!-- Stats Dashboard -->
+        <div id="stats-dashboard" class="card">
+            <h2>Your Learning Stats</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value" id="total-topics">0</div>
+                    <div class="stat-label">Topics</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="questions-due">0</div>
+                    <div class="stat-label">Due Today</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="avg-accuracy">0%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="streak-days">0</div>
+                    <div class="stat-label">Day Streak</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('topics')">Topics</button>
+            <button class="tab-btn" onclick="showTab('review')">Review</button>
+            <button class="tab-btn" onclick="showTab('session')">Active Session</button>
+        </div>
+
+        <!-- Topics Tab -->
+        <div id="topics-tab" class="tab-content active">
+            <div class="card">
+                <h2>Create New Topic</h2>
+                <form id="create-topic-form">
+                    <input type="text" id="topic-name" placeholder="Topic name (e.g., Python Programming)" required>
+                    <textarea id="topic-description" placeholder="Description of what you want to learn..." required></textarea>
+                    <button type="submit" class="btn btn-primary">Create Topic</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Your Topics</h2>
+                <div id="topics-list"></div>
+            </div>
+        </div>
+
+        <!-- Review Tab -->
+        <div id="review-tab" class="tab-content">
+            <div class="card">
+                <h2>Start Learning Session</h2>
+                <p>Practice with spaced repetition and personalized questions</p>
+                <div class="session-controls">
+                    <label>
+                        Session Type:
+                        <select id="session-type">
+                            <option value="mixed">Mixed (New + Review)</option>
+                            <option value="daily_review">Daily Review</option>
+                            <option value="new_material">New Material Only</option>
+                        </select>
+                    </label>
+                    <label>
+                        Questions:
+                        <input type="number" id="max-questions" value="10" min="1" max="50">
+                    </label>
+                    <button onclick="startSession()" class="btn btn-primary">Start Session</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Session Tab -->
+        <div id="session-tab" class="tab-content">
+            <div class="card">
+                <div id="session-container">
+                    <p class="text-center">No active session. Go to Review tab to start one!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
